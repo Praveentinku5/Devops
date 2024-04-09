@@ -1,0 +1,248 @@
+MYSQL
+
+
+A. For queries from a table{commonly used } :- 
+    
+    Select *  (* - selects everything from the table)
+    From ...... (In the blank select the table from where you want to select)
+  
+
+
+B. Using different conditions/ statements (Using the single table):- 
+
+1.	“DESCRIBE ” – It is used to describe the table that we have created.
+2.	“ALTER”  -  A. If you want to add the column after the table created, use this. (eg - 1 :-  ALTER TABLE {table name} ADD {the column name you want to add} {DECIMAL/INT/VARCHAR/DATE/BLOB}).
+         B.  By using the same command you can drop the particular column in the table (eg – 2:- ALTER TABLE {table name} DROP {column name })
+          
+3.	"--" SQL command doesn’t  execute this line (like # in python)
+4.	“COUNT ” :-  To know the number/count of a column it is used. 
+         (Eg :- SELECT COUNT({column name}) 
+                   FROM {table name}.
+5.	"Where" Statement :- Used when you can select an attribute, by giving a value/=/</> Symbols to it(eg :- WHERE customer_id = 1)
+6.	"AS" Statement - Used to change the name of the header/attribute (eg :- price + 10 AS profit{Profit will be printed in the header instead of [points + 10}) 
+7.	"AND" Statement - Will execute the command when both of them are true/ meet the criteria
+8.	"OR" Statement - will execute the command when either of them/ anyone are true/ meet the command criteria
+9.	"NOT" Statement - Like 'Inverse' to the AND or OR cmnd. (eg :- If there is AND statement and NOT in it, then the result will come in OR Statement. Because OR is the Inverse of The AND Statement).
+10.	Remove duplicate/ Unique - Use the word "DISTINCT" after the "SELECT" then it will only shows the distinct from the table. (eg :- SELECT DISTINCT ......).
+11.	Space b/w two words/ Remove "_" b/w 2 words - Use the hyphen/"" between the words where you want to have the space b/w the words.
+12.	"IN" Statement - Used to replace many "OR" Statements in a command. {eg:- WHERE state = 'VA' OR state = 'FL' OR  state = 'GA' instead of that WHERE state IN ('Va', 'FL', 'GA')}.
+13.	"BETWEEN" Statement - Used when you need the values between two attributes. (eg :- WHERE points => 1000 AND points =< 3000. Instead of that use WHERE points BETWEEN '1000' AND '3000'.
+1.	Hyphen/ ""/'' - is must to the words you want to compare).
+14.	"LIKE" Statement - Used when you want to have the data of a name/product starts with a letter/ letter on it.
+A.	eg -1 :- WHERE last_name LIKE 'b%'(Here the last name starting with "B" will come, % - is used because only starting with "B" will come, hyphen/’ - must be used to know the particular letter.)
+B.	eg -2 :- WHERE last_name LIKE '%b%' (Here the letter "b" will come anywhere in the word either it is first or middle or last ).
+C.	eg -3 :- WHERE last_name LIKE '%b' (Here the result will be the letter ending with the "B").
+D.	eg - 4 :- WHERE last_name LIKE 'b____y' (It is used when you particularly know the starting and the ending letters, and how many letters in between them you can use this. In the place of the letters you can use the underscore/_)
+15.	"REGEXP" Statement :- It is used instead of the LIKE.
+a.	eg -1 :- WHERE last_name REGEXP 'field' (the % symbol is not required here)
+b.	eg - 2 :- If you want to have the first word starting with, you should use "^" at the beginning. (WHERE last_name REGEXP '^field')
+c.	eg - 3 :- If you want to find the letter ending, you should use "$" after the word. (WHERE last_name REGEXP 'field$')
+d.	eg - 4 :- When you want to compare more than 2/more, you should use the "pipe/|". (WHERE last_name REGEXP 'field | mac | praveen')
+e.	eg - 5 :- when you want to know the words starting if it is more than 2/more. then use the "^" at the beginning of the first word (WHERE last_name REGEXP '^field | mac | praveen')
+f.	eg - 6:- (WHERE last_name REGEXP 'e') => It will print the letter of e in the last name
+g.	eg - 7 :- WHERE last_name REGEXP '[gmi]e') => It will print the letter having either                 a. ge/
+b.	me/
+c.	ie. In their last_name.
+                           eg - 8:- (WHERE last_name REGEXP '[a-g]e') => Here it will decide the range from a to g. It may be either ae/be/ce/de/ee/fe/ge. 
+16.	CONCAT :- when you want to join two rows side by side using commas, this is used.
+     Eg :- SELECT CONCAT (state,’,’, city)     => here we want state and city side by side.
+              FROM customers
+17.	UPPER :-  It is used when you want to change the all alphabets in a row into upper case.
+Eg :- SELECT name, UPPER(name)    => all the names in the column name converted into upper case.
+       FROM customers
+18.	SQUARE ROOT (SQRT) :- when you want to find the square root of the particular column .it is used.
+Eg :- SELECT cost, SQRT(cost)      => It will squareroot the cost row
+        FROM customers
+
+19.	AVERAGE (AVG) :-  it helps to find out the avg of the particular column.
+Eg:- SELECT AVG (cost)  =>It will give the avg of the column cost
+        FROM customers 
+20.	 SUM (SUM) :-  It will add the all the rows in a column and give their sum.
+Eg:- SELECT SUM (cost)    => It will add the all rows in the column cost.
+         FROM customers
+21.	MAX :-  it will give you the maximum value in the column 
+Eg:- SELECT MAX(cost)    => Output is the maximum value
+       FROM items
+22.	MIN :- The opposite of the maximum value is the minimum value( it gives the minimum valuein the column).
+23.	"NULL" Statement :- It means the absence of the value/ something in the table. (WHERE phone_num IS NULL).
+
+24.	"ORDER BY" :- It is used when we want the columns either in the ascending order or descending order of a row. 
+A.	eg -1 :-(ORDER BY first_name) => Result is the columns in the first_name comes in Ascending order
+B.	eg -2 :- (ORDER BY first_name DESC) => The result will be in the descending order.
+25.	"LIMIT" OPERATOR :- eg - 1:- (SELECT *
+                      FROM customers
+                            LIMIT 3) => Here it will only print the first 3 lines in the table.
+                          eg - 2 :- (LIMIT 6,3) => Here it will skip the first six lines and shows/print the next three lines in the table.
+
+26.	 “SELECT LAST_INSERT_ID ()”  => Used to check the last inserted value/row into the table.
+27.	RENAME TABLE :- When you want to rename the table which you have created
+                  RENAME TABLE customers TO consumers   => it will change the name from customers to consumers.
+28.	VIEW :-  when you want to view the order of the table either ascending or descending, it is used
+CREATE VIEW most bids AS   =>  it won’t create a new table, but everytime the table updates it will create a newview
+SELECT * FROM customers ORDER BY  bids DESC/ASC LIMIT 10
+
+
+c. Using the multiple tables :- 
+1. “JOIN ” :- we can use this when we want to join 2 tables which has same attribute, we can join them using that attribute.  (eg :- SELECT *
+                                                  FROM table1          => The table you want to select
+                                                  JOIN table2        => The second table which you compare
+                                                            ON table1.commonthing = table2.commonthing)    =>
+ 
+2.	 Join across 2 databases :-   We can join the tables in two different databases using the prefix of the second database.
+Eg :-  SELECT *
+          FROM order_items         => we are in one database
+          JOIN sql_inventory.products          => sql_inventory is another database. You have to keep it before the comparison.
+                 ON  order_items.customer = sql_inventory.customer  
+3.	Self join the same table :- we can join the same table from a same database.
+       
+Eg :- SELECT *
+         FROM  table a        (“a” is used as ALIAS to that table. )
+         JOIN  table b ON a.product_id = b.customer_id   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.	Join multiple tables :- 
+
+ 
+
+
+5.	Compound join condition :- when there is a composite key in a tables and you want to join those tables. We have to use the AND statement and join them.
+
+ 
+
+6.	OUTER JOIN :-  When you want to join two tables it will only shows the result which are common on these tables. But if you want the complete table even it is NULL  and you want it in the result, we use the keywords LEFT/ RIGHT after the join.  Result a. LEFT :- if you use this word it will gives the result from the table.1/ the table used after the FROM, whether the condition is true or not.   B. RIGHT :- It is the opposite of the LEFT, and you have the change the places after the FROM & JOIN.
+7.	“USING () ” clause :- when we have the same name attribute/ header which we compare two tables, rather than using the o.customer_id = m.customer_id. We can use the word USING like using (customer_id).  
+8.	“NATURAL” join :- By using the natural join we don’t compare anything from these tables. The database will automatically compare between these two tables based on the same name.
+
+ 
+9.	“CROSS” join :- A. IMPLICIT SYNTAX:-  It is used to join the every record in the first table to every record in the second table. 
+
+
+ 
+  
+
+B. EXPLICIT syntax :- Here we don’t use the word CROSS before the word JOIN. Instead from the above picture like, we use SELECT *
+                                                FROM customers, products  => The result will be same as the above picture, but the difference is we don’t use the word CROSS in here.
+
+
+D. USING “ UNIONS ” :-  It is used to combine the multiple rows in a table/ tables.
+
+1.SELECT *
+FROM orders
+WHERE order_date IS  >= ‘2019-01-01’          => The result is printed which are on/ after the selected                                                                                                          date.   
+
+2. SELECT *
+  FROM orders
+WHERE order_date IS < ‘2019-01-01’           => The output will be which is less than that date.
+
+To combine these two options, we use the UNIONS.      
+
+ 
+[
+SELECT  
+     customer_id,
+     first_name,
+     points ,
+     'bronze' AS type
+FROM customers
+where points < '2000' 
+UNION
+SELECT  
+     customer_id,
+     first_name,
+     points,
+     'silver' AS type
+FROM customers
+where points BETWEEN '2000' AND '3000'  
+UNION
+SELECT  
+     customer_id,
+     first_name,
+     points ,
+     'gold' AS type
+FROM customers
+where points BETWEEN '3000' AND '4000'          => You can also use (>3000)
+ORDER BY first_name   ]                          => One more example.
+
+
+
+E. HOW TO INSERT/DELETE/ UPDATE DATA :- 
+
+1.	Inserting a “SINGLE ROW” :-   To insert a single row use the commands as follows 
+
+INSERT INTO customers
+VALUES  (‘hxgxjhb’, ‘hagsvtg’, NULL, ‘jdavcbk’, DEFAULT  )           =>1. for strings you have to provide the hyphen/”” at the beginning and the ending of each word.  2. To keep it vacant/empty use the word NULL.   3. To automatically define the value by the system/ autoincrement the value by system  use the word DEFAULT.  
+
+2.	Inserting a “MULTIPLE ROWS” :- 
+
+INSERT INTO shippers ( name)          =>  In parenthesis use the column u want to insert the value.
+VALUES (‘dgvcwdhg’),
+                 (‘hgcwehbc’)           => It will add the two rows in that column.
+
+
+3.	Inserting “HIERARCHIAL ROWS” :-   It is used when the two tables are related and you want to add/ insert the values on both the tables at same time. 
+
+
+ 
+
+
+4.	“COPY DATA ” from one table to another:-    To copy data from one table to another there are 2 types :-    1. Create a new table 
+
+          CREATE TABLE  order_archived AS        => ( order_archived is the new table, where you paste the data )
+           SELECT*   
+           FROM orders                        => (orders is the old table where you want to copy all the data)     
+
+
+        2. Transfer the data of limited into the existing table
+   
+
+ 
+
+ HOW TO UPDATE DATA IN SQL :-            
+1.	Update only a single row in the table :- 
+ 
+ 
+2.	Update for multiple rows :-
+
+UPDATE customers
+SET points = points +50 
+WHERE birth_date < '1990-01-01'    => It will automatically increase the persons points by 50 those who are born before that date.
+
+3.	Using “subqueries in the update statement” :- 
+ 
+
+
+
+
+ 
+                                                                                        
+
+
+4.	“DELETING ROWS” :-  You can delete the rows using the following command 
+
+DELETE FROM  customers   => It will delete all the contents in the table.
+
+If you want to delete the sub-line then use the following commands 
+
+
+ 
+
+
+
